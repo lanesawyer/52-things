@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ThingForm from './Thing.js';
+import ThingForm from './ThingForm.js';
+import ThingList from './ThingList.js';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,6 +16,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <ThingForm />
+        <ThingList />
       </div>
     );
   }
