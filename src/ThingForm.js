@@ -18,11 +18,11 @@ class ThingForm extends Component {
   }
 
   handleSubmit(event) {
-    firebase.database().ref('items').push({
+    firebase.database().ref('things').push({
       text: this.state.value
     });
 
-    this.state.value = '';
+    //this.state.value = '';
 
     event.preventDefault();
   }
