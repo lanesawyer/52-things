@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Header from './Header.js';
 import ThingForm from './ThingForm.js';
 import ThingList from './ThingList.js';
 import logo from './logo.svg';
@@ -8,6 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
