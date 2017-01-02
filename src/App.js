@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import Header from './Header.js';
-import ThingForm from './ThingForm.js';
-import ThingList from './ThingList.js';
+import Header from './components/Header.js';
+import LoginForm from './components/LoginForm.js';
+import ThingForm from './components/ThingForm.js';
+import ThingList from './components/ThingList.js';
 import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <LoginForm />
         <ThingForm />
         <ThingList />
       </div>

@@ -13,10 +13,13 @@ class Header extends Component {
     }
 
     render() {
+        
+        var user = firebase.auth().currentUser;
+
         return (
             <div className="header">
                 <div className="title">52 Things</div>
-                <UserMenu userName="HEyo" />
+                <UserMenu userName={user ? 'In!' : 'Out...'} />
             </div>
         );
     }
