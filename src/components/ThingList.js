@@ -6,7 +6,7 @@ import Category from './Category.js';
 import Thing from './Thing.js';
 
 var ThingList = React.createClass({
-    //mixins: [ReactFireMixin],
+    mixins: [ReactFireMixin],
     getInitialState: function () {
         return {
             things: [
