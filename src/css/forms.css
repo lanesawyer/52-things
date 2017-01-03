@@ -1,0 +1,18 @@
+form {
+    padding: 10px;
+}
+
+label {
+    display: block;
+}
+
+button, input[type='submit'] {
+    background-color: #22FFDD;
+    border-radius: 5px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+form button, form input[type='submit'] {
+    display: block;
+}

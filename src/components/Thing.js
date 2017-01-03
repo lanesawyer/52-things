@@ -7,10 +7,11 @@ class Thing extends Component {
         super(props);
 
         this.state = {
-            text: ''
+            
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleCheckbox = this.handleCheckbox.bind(this);
     }
 
     handleClick(e) {
@@ -18,10 +19,18 @@ class Thing extends Component {
         e.preventDefault();
     }
 
+    handleCheckbox(e) {
+        this.setState({
+            completed: !this.state.completed
+        });
+        //TODO: Update on Firebase
+    }
+
     render() {
         return (
-            <li className="thing">
-                {this.props.text}
+            <li className='thing'>
+                <input type='checkbox' onClick={this.handleCheckbox} />
+                <div className={this.state.completed ? 'thing-title completed' : 'thing-title'}>{this.props.text}</div>
                 <button onClick={this.handleClick}>Delete</button>
             </li>
         );

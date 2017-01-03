@@ -41,15 +41,11 @@ class LoginForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Email:
+                <label>Email:</label>
                 <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
-                </label>
-                <label>
-                    Password:
+                <label>Password:</label>
                 <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-                </label>
-                <input type="submit" value="Create Account" />
+                <input type="submit" value="Login" />
             </form>
         );
     }

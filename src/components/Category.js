@@ -4,15 +4,11 @@ import firebase from "firebase";
 class Category extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            text: ''
-        };
     }
 
     render() {
         return (
-            <h1>Category</h1>
+            <h1>{this.props.title}</h1>
         );
     }
 }

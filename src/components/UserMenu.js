@@ -17,15 +17,15 @@ class UserMenu extends Component {
 
         if (user) {
             return (
-                <div className="auth">
+                <div className='auth'>
                     <div>{user.email}</div>
                     <button>Logout</button>
                 </div>
             );
         } else {
             return (
-                <div>
-                    Login!
+                <div className='auth'>
+                    <button>Login!</button>
                 </div>
             );
         }

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  
 }
 
 .App-logo {
@@ -12,10 +12,6 @@
   height: 150px;
   padding: 20px;
   color: white;
-}
-
-.App-intro {
-  font-size: large;
 }
 
 @keyframes App-logo-spin {
@@ -33,4 +29,17 @@
 
 .auth {
   float: right;
+}
+
+li.thing {
+  padding: 10px;
+}
+
+.thing-title {
+  display: inline-block;
+  width: 250px;
+}
+
+.completed {
+  text-decoration: line-through;
 }
