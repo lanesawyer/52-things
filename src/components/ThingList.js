@@ -17,8 +17,9 @@ var ThingList = React.createClass({
         }
     },
     componentWillMount: function () {
-        var ref = firebase.database().ref("things"); //search for category here
-        this.bindAsArray(ref, "things");
+        var user = firebase.auth().currentUser;
+        var ref = firebase.database().ref('things/' + user.uid); //search for category here
+        this.bindAsArray(ref, 'things');
     },
     render: function () {
         return (

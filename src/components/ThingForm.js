@@ -18,7 +18,9 @@ class ThingForm extends Component {
   }
 
   handleSubmit(event) {
-    firebase.database().ref('things').push({
+    var user = firebase.auth().currentUser;
+
+    firebase.database().ref('things/' + user.uid).push({
       text: this.state.value
     });
 

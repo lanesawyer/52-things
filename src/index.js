@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Constants from './Constants.js';
 import App from './App';
 import './css/index.css';
 
 import firebase from "firebase";
 
 var config = {
-      apiKey: "AIzaSyDAYNHGNywDByxSkgew5PJDIPVz1pAyF5g",
-      authDomain: "things-eb829.firebaseapp.com",
-      databaseURL: "https://things-eb829.firebaseio.com",
-      storageBucket: "things-eb829.appspot.com",
-      messagingSenderId: "475260068013"
+      apiKey: Constants.apiKey,
+      authDomain: Constants.authDomain,
+      databaseURL: Constants.databaseUrl,
+      storageBucket: Constants.storageBucket,
+      messagingSenderId: Constants.messagingSenderId
     };
 
 firebase.initializeApp(config);

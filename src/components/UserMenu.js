@@ -10,16 +10,34 @@ class UserMenu extends Component {
             userName: 'test',
             userId: ''
         };
+
+        var self = this;
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                self.setState({signedIn: true})
+            } else {
+                self.setState({signedIn: false})
+            }
+        });
+
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout(e) {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+        }, function(error) {
+            // An error happened.
+        });
     }
 
     render() {
-        var user = firebase.auth().currentUser;
-
-        if (user) {
+        if (this.state.signedIn) {
             return (
                 <div className='auth'>
-                    <div>{user.email}</div>
-                    <button>Logout</button>
+                    <div>hieieie</div>
+                    <button onClick={this.handleLogout}>Logout</button>
                 </div>
             );
         } else {
@@ -29,8 +47,6 @@ class UserMenu extends Component {
                 </div>
             );
         }
-
-        return (<div>wat</div>);
     }
 }
 
