@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import Header from './components/Header.js';
 import NewUserForm from './components/NewUserForm.js';
 import LoginForm from './components/LoginForm.js';
-import ThingForm from './components/ThingForm.js';
+import ThingCounter from './components/ThingCounter.js';
 import ThingList from './components/ThingList.js';
 import logo from './logo.svg';
 import './css/App.css';
@@ -39,9 +39,9 @@ return (
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to 52 Things</h2>
         </div>
-        <ThingForm />
-        <ThingList category='Category 1' />
-        <ThingList category='Category 2' />
+        <ThingCounter />
+        <ThingList categoryTitle='Category 1' category='cat1' />
+        <ThingList categoryTitle='Category 2' category='cat2' />
       </div>
     );
     } else {

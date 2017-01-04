@@ -21,7 +21,8 @@ class ThingForm extends Component {
     var user = firebase.auth().currentUser;
 
     firebase.database().ref('things/' + user.uid).push({
-      text: this.state.value
+      text: this.state.value,
+      category: this.props.category
     });
 
     //this.state.value = '';

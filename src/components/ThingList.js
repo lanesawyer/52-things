@@ -4,32 +4,23 @@ import ReactFireMixin from 'reactfire';
 
 import Category from './Category.js';
 import Thing from './Thing.js';
+import ThingForm from './ThingForm.js';
 
 var ThingList = React.createClass({
     mixins: [ReactFireMixin],
-    getInitialState: function () {
-        return {
-            things: [
-                {key: '1', text: 'hey'},
-                {key: '2', text: 'hi'},
-                {key: '3', text: 'this is a little longer'}
-            ]
-        }
-    },
     componentWillMount: function () {
         var user = firebase.auth().currentUser;
-        var ref = firebase.database().ref('things/' + user.uid); //search for category here
+        var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(this.props.category);
         this.bindAsArray(ref, 'things');
     },
     render: function () {
         return (
             <div>
-                <Category title={this.props.category} />
+                <Category title={this.props.categoryTitle} />
                 <ul>
-                    {this.state.things.map(function(item, index) {
-                    return <Thing key={item['.key']} id={item['.key']} text={item['text']} />;
-                    })}
+                    {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} text={item.text} category={item.category} />)}
                 </ul>
+                <ThingForm category={this.props.category} />
             </div>
         );
     }

@@ -15,7 +15,8 @@ class Thing extends Component {
     }
 
     handleClick(e) {
-        firebase.database().ref('things').child(this.props.id).remove();
+        var user = firebase.auth().currentUser;
+        firebase.database().ref('things/' + user.uid).child(this.props.id).remove();
         e.preventDefault();
     }
 
