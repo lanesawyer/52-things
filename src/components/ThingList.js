@@ -15,13 +15,13 @@ var ThingList = React.createClass({
     },
     render: function () {
         return (
-            <div>
+            <section className='container-item'>
                 <Category title={this.props.categoryTitle} />
                 <ul>
                     {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} text={item.text} category={item.category} />)}
                 </ul>
                 <ThingForm category={this.props.category} />
-            </div>
+            </section>
         );
     }
 });

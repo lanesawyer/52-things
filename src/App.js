@@ -6,6 +6,9 @@ import NewUserForm from './components/NewUserForm.js';
 import LoginForm from './components/LoginForm.js';
 import ThingCounter from './components/ThingCounter.js';
 import ThingList from './components/ThingList.js';
+
+import ThingsService from './services/ThingsService.js';
+
 import logo from './logo.svg';
 import './css/App.css';
 import './css/forms.css';
@@ -13,6 +16,8 @@ import './css/forms.css';
 class App extends Component {
   constructor(props) {
     super(props)
+
+    console.log(ThingsService.getCurrentUser());
 
     this.state = {
       signedIn: false
@@ -31,12 +36,13 @@ class App extends Component {
   // get categories of things to pass into thing list
 
   render() {
+
     if (this.state.signedIn) {
 return (
-      <div className="App">
+      <div className='App'>
         <Header />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
           <h2>Welcome to 52 Things</h2>
         </div>
         <ThingCounter />
@@ -46,14 +52,16 @@ return (
     );
     } else {
       return (
-      <div className="App">
+      <div className='App'>
         <Header />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
           <h2>Welcome to 52 Things</h2>
         </div>
-        <NewUserForm />
-        <LoginForm />
+        <div className='container'>
+          <NewUserForm />
+          <LoginForm />
+        </div>
       </div>
     );
     }

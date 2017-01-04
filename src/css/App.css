@@ -33,6 +33,7 @@
 
 li.thing {
   padding: 10px;
+  list-style: none;
 }
 
 .thing-title {
@@ -42,4 +43,16 @@ li.thing {
 
 .completed {
   text-decoration: line-through;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 400px;
+}
+
+.container-item {
+  width: 600px;
+  margin: auto;
 }

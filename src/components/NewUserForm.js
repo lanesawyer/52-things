@@ -40,13 +40,16 @@ class NewUserForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Email:</label>
-                <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
-                <label>Password:</label>
-                <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-                <input type="submit" value="Create Account" />
-            </form>
+            <section className='container-item'>
+                <h1>Create Account</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Email:</label>
+                    <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+                    <label>Password:</label>
+                    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                    <input type="submit" value="Create Account" />
+                </form>
+            </section>
         );
     }
 }

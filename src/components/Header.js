@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import firebase from "firebase";
 
+import ThingsService from '../services/ThingsService.js';
 import UserMenu from './UserMenu.js';
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
 
     render() {
         
-        var user = firebase.auth().currentUser;
+        var user = ThingsService.getCurrentUser();
 
         return (
             <div className="header">

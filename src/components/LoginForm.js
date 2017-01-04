@@ -40,13 +40,16 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Email:</label>
-                <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
-                <label>Password:</label>
-                <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-                <input type="submit" value="Login" />
-            </form>
+            <section className='container-item'>
+                <h1>Login</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Email:</label>
+                    <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+                    <label>Password:</label>
+                    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                    <input type="submit" value="Login" />
+                </form>
+            </section>
         );
     }
 }
