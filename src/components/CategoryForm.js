@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import ThingService from '../services/ThingService.js';
+import CategoryService from '../services/CategoryService.js';
 
-class ThingForm extends Component {
+class CategoryForm extends Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class ThingForm extends Component {
 
   handleSubmit(event) {
 
-    ThingService.addThing(this.state.value, this.props.category);
+    CategoryService.addCategory(this.state.value);
 
     this.setState({ value: '' });
 
@@ -34,10 +34,10 @@ class ThingForm extends Component {
           Thing:
           <input type='text' value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type='submit' value='Add' />
+        <input type='submit' value='Add Category' />
       </form>
     );
   }
 }
 
-export default ThingForm
+export default CategoryForm

@@ -13,6 +13,9 @@ var ThingList = React.createClass({
         var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(this.props.category);
         this.bindAsArray(ref, 'things');
     },
+    componentWillUnmount: function () {
+        this.firebaseRef.off();
+    },
     render: function () {
         return (
             <section className='container-item'>

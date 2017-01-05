@@ -6,6 +6,7 @@ import NewUserForm from './components/NewUserForm.js';
 import LoginForm from './components/LoginForm.js';
 import ThingCounter from './components/ThingCounter.js';
 import ThingList from './components/ThingList.js';
+import CategoryForm from './components/CategoryForm.js';
 
 import logo from './logo.svg';
 import './css/App.css';
@@ -46,6 +47,7 @@ class App extends Component {
         <ThingCounter />
         <ThingList categoryTitle='Category 1' category='cat1' />
         <ThingList categoryTitle='Category 2' category='cat2' />
+        <CategoryForm />
       </div>
     );
   }
