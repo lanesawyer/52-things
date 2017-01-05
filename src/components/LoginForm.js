@@ -44,10 +44,10 @@ class LoginForm extends Component {
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Email:</label>
-                    <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+                    <input type='text' value={this.state.email} onChange={this.handleEmailChange} />
                     <label>Password:</label>
-                    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-                    <input type="submit" value="Login" />
+                    <input type='password' value={this.state.password} onChange={this.handlePasswordChange} />
+                    <input type='submit' value='Login' />
                 </form>
             </section>
         );

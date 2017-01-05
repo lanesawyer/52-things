@@ -7,8 +7,6 @@ import LoginForm from './components/LoginForm.js';
 import ThingCounter from './components/ThingCounter.js';
 import ThingList from './components/ThingList.js';
 
-import ThingsService from './services/ThingsService.js';
-
 import logo from './logo.svg';
 import './css/App.css';
 import './css/forms.css';
@@ -17,15 +15,13 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    console.log(ThingsService.getCurrentUser());
-
     this.state = {
       signedIn: false
     }
 
     var self = this;
 
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         self.setState({ signedIn: true })
       } else {
@@ -35,38 +31,37 @@ class App extends Component {
   }
   // get categories of things to pass into thing list
 
-  render() {
+  renderLoginScreen = () => {
+    return (
+      <div className='container'>
+        <NewUserForm />
+        <LoginForm />
+      </div>
+    );
+  }
 
-    if (this.state.signedIn) {
-return (
-      <div className='App'>
-        <Header />
-        <div className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h2>Welcome to 52 Things</h2>
-        </div>
+  renderThingsScreen = () => {
+    return (
+      <div className='container'>
         <ThingCounter />
         <ThingList categoryTitle='Category 1' category='cat1' />
         <ThingList categoryTitle='Category 2' category='cat2' />
       </div>
     );
-    } else {
-      return (
-      <div className='App'>
-        <Header />
-        <div className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h2>Welcome to 52 Things</h2>
-        </div>
-        <div className='container'>
-          <NewUserForm />
-          <LoginForm />
-        </div>
-      </div>
-    );
-    }
-    
   }
+
+  render() {
+      return (
+        <div className='App'>
+          <Header />
+          <div className='App-header'>
+            <img src={logo} className='App-logo' alt='logo' />
+            <h2>Welcome to 52 Things</h2>
+          </div>
+          {this.state.signedIn ? this.renderThingsScreen() : this.renderLoginScreen()}
+        </div>
+      );
+    }
 }
 
 export default App;

@@ -17,8 +17,8 @@ class Header extends Component {
         var user = ThingsService.getCurrentUser();
 
         return (
-            <div className="header">
-                <div className="title">52 Things</div>
+            <div className='header'>
+                <div className='title'>52 Things</div>
                 <UserMenu userName={user ? 'In!' : 'Out...'} />
             </div>
         );

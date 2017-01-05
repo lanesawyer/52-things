@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+
+import ThingsService from '../services/ThingsService.js';
 
 class ThingForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-      value: '' 
+    this.state = {
+      value: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,14 +19,10 @@ class ThingForm extends Component {
   }
 
   handleSubmit(event) {
-    var user = firebase.auth().currentUser;
 
-    firebase.database().ref('things/' + user.uid).push({
-      text: this.state.value,
-      category: this.props.category
-    });
+    ThingsService.addThing(this.state.value, this.props.category);
 
-    //this.state.value = '';
+    this.setState({ value: '' });
 
     event.preventDefault();
   }
@@ -35,9 +32,9 @@ class ThingForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Thing:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type='text' ref={el => this.thingFormInput = el} value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Add" />
+        <input type='submit' value='Add' />
       </form>
     );
   }

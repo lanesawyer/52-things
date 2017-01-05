@@ -28,6 +28,14 @@ class ThingsService {
         return this.things;
     }
 
+    addThing = (text, category) => {
+        var user = this.getCurrentUser();
+        firebase.database().ref('things/' + user.uid).push({
+            text: text,
+            category: category
+        });
+    }
+
     toggleCompleted = (thingId, isCompleted) => {
         var user = this.getCurrentUser();
         firebase.database().ref('things/' + user.uid).child(thingId).update({
