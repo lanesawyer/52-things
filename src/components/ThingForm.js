@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ThingsService from '../services/ThingsService.js';
+import ThingService from '../services/ThingService.js';
 
 class ThingForm extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class ThingForm extends Component {
 
   handleSubmit(event) {
 
-    ThingsService.addThing(this.state.value, this.props.category);
+    ThingService.addThing(this.state.value, this.props.category);
 
     this.setState({ value: '' });
 

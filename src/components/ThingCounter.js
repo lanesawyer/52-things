@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-//import ThingsService from '../services/ThingsService.js';
-
 class ThingCounter extends Component {
     constructor(props) {
         super(props);

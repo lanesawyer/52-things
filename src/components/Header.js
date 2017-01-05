@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ThingsService from '../services/ThingsService.js';
+import ThingService from '../services/ThingService.js';
 import UserMenu from './UserMenu.js';
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
 
     render() {
         
-        var user = ThingsService.getCurrentUser();
+        var user = ThingService.getCurrentUser();
 
         return (
             <div className='header'>

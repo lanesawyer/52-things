@@ -1,7 +1,9 @@
 import firebase from 'firebase';
 import Constants from '../Constants.js';
 
-class ThingsService {
+const thingKey = 'things/';
+
+class ThingService {
     constructor() {
         var config = {
             apiKey: Constants.apiKey,
@@ -15,7 +17,7 @@ class ThingsService {
 
         var user = this.getCurrentUser();
         if (user) {
-            var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(this.props.category);
+            var ref = firebase.database().ref(thingKey + user.uid).orderByChild('category').equalTo(this.props.category);
             this.things = ref;
         }
     }
@@ -30,7 +32,7 @@ class ThingsService {
 
     addThing = (text, category) => {
         var user = this.getCurrentUser();
-        firebase.database().ref('things/' + user.uid).push({
+        firebase.database().ref(thingKey + user.uid).push({
             text: text,
             category: category
         });
@@ -38,15 +40,15 @@ class ThingsService {
 
     toggleCompleted = (thingId, isCompleted) => {
         var user = this.getCurrentUser();
-        firebase.database().ref('things/' + user.uid).child(thingId).update({
+        firebase.database().ref(thingKey + user.uid).child(thingId).update({
             completed: !isCompleted
         });
     }
 
     deleteThing = (thingId) => {
         var user = this.getCurrentUser();
-        firebase.database().ref('things/' + user.uid).child(thingId).remove();
+        firebase.database().ref(thingKey + user.uid).child(thingId).remove();
     }
 }
 
-export default new ThingsService();
+export default new ThingService();

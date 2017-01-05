@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ThingsService from '../services/ThingsService.js';
+import ThingService from '../services/ThingService.js';
 
 class Thing extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Thing extends Component {
     }
 
     handleClick(e) {
-        ThingsService.deleteThing(this.props.id);
+        ThingService.deleteThing(this.props.id);
         e.preventDefault();
     }
 
@@ -23,7 +23,7 @@ class Thing extends Component {
         this.setState({
             completed: !this.state.completed
         });
-        ThingsService.toggleCompleted(this.props.id, this.state.completed);
+        ThingService.toggleCompleted(this.props.id, this.state.completed);
     }
 
     render() {
