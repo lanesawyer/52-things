@@ -18,7 +18,7 @@ var ThingList = React.createClass({
             <section className='container-item'>
                 <Category title={this.props.categoryTitle} />
                 <ul>
-                    {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} text={item.text} category={item.category} />)}
+                    {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} thing={item} />)}
                 </ul>
                 <ThingForm category={this.props.category} />
             </section>

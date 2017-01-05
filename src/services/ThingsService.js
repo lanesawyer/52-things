@@ -27,6 +27,18 @@ class ThingsService {
     getThings = () => {
         return this.things;
     }
+
+    toggleCompleted = (thingId, isCompleted) => {
+        var user = this.getCurrentUser();
+        firebase.database().ref('things/' + user.uid).child(thingId).update({
+            completed: !isCompleted
+        });
+    }
+
+    deleteThing = (thingId) => {
+        var user = this.getCurrentUser();
+        firebase.database().ref('things/' + user.uid).child(thingId).remove();
+    }
 }
 
 export default new ThingsService();

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import firebase from "firebase";
+import ThingsService from '../services/ThingsService.js';
 
 class Thing extends Component {
     constructor(props) {
@@ -15,8 +15,7 @@ class Thing extends Component {
     }
 
     handleClick(e) {
-        var user = firebase.auth().currentUser;
-        firebase.database().ref('things/' + user.uid).child(this.props.id).remove();
+        ThingsService.deleteThing(this.props.id);
         e.preventDefault();
     }
 
@@ -24,14 +23,14 @@ class Thing extends Component {
         this.setState({
             completed: !this.state.completed
         });
-        //TODO: Update on Firebase
+        ThingsService.toggleCompleted(this.props.id, this.state.completed);
     }
 
     render() {
         return (
             <li className='thing'>
-                <input type='checkbox' onClick={this.handleCheckbox} />
-                <div className={this.state.completed ? 'thing-title completed' : 'thing-title'}>{this.props.text}</div>
+                <input type='checkbox' checked={this.props.thing.completed} onClick={this.handleCheckbox} />
+                <div className={this.props.thing.completed ? 'thing-title completed' : 'thing-title'}>{this.props.thing.text}</div>
                 <button onClick={this.handleClick}>Delete</button>
             </li>
         );
