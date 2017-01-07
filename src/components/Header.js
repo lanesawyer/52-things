@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ThingService from '../services/ThingService.js';
+import AuthService from '../services/AuthService.js';
 import UserMenu from './UserMenu.js';
 
 class Header extends Component {
@@ -14,7 +14,7 @@ class Header extends Component {
 
     render() {
         
-        var user = ThingService.getCurrentUser();
+        var user = AuthService.getCurrentUser();
 
         return (
             <div className='header'>

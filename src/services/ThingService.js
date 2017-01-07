@@ -1,37 +1,18 @@
 import firebase from 'firebase';
-import Constants from '../Constants.js';
+import AuthService from './AuthService.js';
 
 const thingKey = 'things/';
 
 class ThingService {
-    constructor() {
-        var config = {
-            apiKey: Constants.apiKey,
-            authDomain: Constants.authDomain,
-            databaseURL: Constants.databaseUrl,
-            storageBucket: Constants.storageBucket,
-            messagingSenderId: Constants.messagingSenderId
-        };
 
-        firebase.initializeApp(config);
-
-        var user = this.getCurrentUser();
-        if (user) {
-            var ref = firebase.database().ref(thingKey + user.uid).orderByChild('category').equalTo(this.props.category);
-            this.things = ref;
-        }
-    }
-
-    getCurrentUser = () => {
-        return firebase.auth().currentUser;
-    }
-
-    getThings = () => {
-        return this.things;
+    getThings = (categoryId) => {
+        var user = AuthService.getCurrentUser();
+        var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(categoryId);
+        return ref;
     }
 
     addThing = (text, category) => {
-        var user = this.getCurrentUser();
+        var user = AuthService.getCurrentUser();
         firebase.database().ref(thingKey + user.uid).push({
             text: text,
             category: category
@@ -39,14 +20,14 @@ class ThingService {
     }
 
     toggleCompleted = (thingId, isCompleted) => {
-        var user = this.getCurrentUser();
+        var user = AuthService.getCurrentUser();
         firebase.database().ref(thingKey + user.uid).child(thingId).update({
             completed: !isCompleted
         });
     }
 
     deleteThing = (thingId) => {
-        var user = this.getCurrentUser();
+        var user = AuthService.getCurrentUser();
         firebase.database().ref(thingKey + user.uid).child(thingId).remove();
     }
 }

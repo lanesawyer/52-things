@@ -4,9 +4,7 @@ import firebase from 'firebase';
 import Header from './components/Header.js';
 import NewUserForm from './components/NewUserForm.js';
 import LoginForm from './components/LoginForm.js';
-import ThingCounter from './components/ThingCounter.js';
-import ThingList from './components/ThingList.js';
-import CategoryForm from './components/CategoryForm.js';
+import ThingsScreen from './components/ThingsScreen.js';
 
 import logo from './logo.svg';
 import './css/App.css';
@@ -44,10 +42,7 @@ class App extends Component {
   renderThingsScreen = () => {
     return (
       <div className='container'>
-        <ThingCounter />
-        <ThingList categoryTitle='Category 1' category='cat1' />
-        <ThingList categoryTitle='Category 2' category='cat2' />
-        <CategoryForm />
+        <ThingsScreen />
       </div>
     );
   }

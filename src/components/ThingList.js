@@ -1,7 +1,7 @@
 import React from 'react';
-import firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
 
+import ThingService from '../services/ThingService.js';
 import Category from './Category.js';
 import Thing from './Thing.js';
 import ThingForm from './ThingForm.js';
@@ -9,8 +9,7 @@ import ThingForm from './ThingForm.js';
 var ThingList = React.createClass({
     mixins: [ReactFireMixin],
     componentWillMount: function () {
-        var user = firebase.auth().currentUser;
-        var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(this.props.category);
+        const ref = ThingService.getThings(this.props.categoryId);
         this.bindAsArray(ref, 'things');
     },
     componentWillUnmount: function () {
@@ -23,7 +22,7 @@ var ThingList = React.createClass({
                 <ul>
                     {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} thing={item} />)}
                 </ul>
-                <ThingForm category={this.props.category} />
+                <ThingForm category={this.props.categoryId} />
             </section>
         );
     }

@@ -1,27 +1,24 @@
 import firebase from 'firebase';
-import Constants from '../Constants.js';
+import AuthService from './AuthService.js';
 
 const categoryKey = 'categories/';
 
 class CategoryService {
-    constructor() {
-
-    }
 
     getCategories = () => {
-        var user = firebase.auth().currentUser;
+        var user = AuthService.getCurrentUser();
         return firebase.database.ref(categoryKey + user.uid);
     }
 
     addCategory = (category) => {
-        var user = firebase.auth().currentUser;
+        var user =  AuthService.getCurrentUser();
         firebase.database().ref(categoryKey + user.uid).push({
             category: category
         });
     }
 
     deleteCategory = (categoryId) => {
-        var user = this.getCurrentUser();
+        var user =  AuthService.getCurrentUser();
         firebase.database().ref(categoryKey + user.uid).child(categoryId).remove();
     }
 }

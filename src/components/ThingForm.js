@@ -20,9 +20,10 @@ class ThingForm extends Component {
 
   handleSubmit(event) {
 
-    ThingService.addThing(this.state.value, this.props.category);
-
-    this.setState({ value: '' });
+    if (this.state.value !== '') {
+      ThingService.addThing(this.state.value, this.props.category);
+      this.setState({ value: '' });
+    }
 
     event.preventDefault();
   }

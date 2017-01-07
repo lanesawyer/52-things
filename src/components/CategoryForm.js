@@ -20,9 +20,10 @@ class CategoryForm extends Component {
 
   handleSubmit(event) {
 
-    CategoryService.addCategory(this.state.value);
-
-    this.setState({ value: '' });
+    if (this.state.value !== '') {
+      CategoryService.addCategory(this.state.value);
+      this.setState({ value: '' });
+    }
 
     event.preventDefault();
   }
