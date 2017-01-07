@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import md5 from 'md5';
 import Constants from '../Constants.js';
 
 class AuthService {
@@ -16,6 +17,10 @@ class AuthService {
 
     getCurrentUser = () => {
         return firebase.auth().currentUser;
+    }
+
+    getGravitarUrl = (email) => {
+        return 'https://www.gravatar.com/avatar/' + md5(email);
     }
 }
 

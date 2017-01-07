@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
 import firebase from 'firebase';
+
+import AuthService from '../services/AuthService.js';
 
 class UserMenu extends Component {
     constructor(props) {
@@ -36,7 +37,9 @@ class UserMenu extends Component {
         if (this.state.signedIn) {
             return (
                 <div className='auth'>
-                    <div>hieieie</div>
+                    <div>{this.props.user.displayName}</div>
+                    <div>{this.props.user.email}</div>
+                    <div><img src={AuthService.getGravitarUrl(this.props.user.email)} alt='Profile' /></div>
                     <button onClick={this.handleLogout}>Logout</button>
                 </div>
             );

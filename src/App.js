@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
-import Header from './components/Header.js';
+import Sidebar from './components/Sidebar.js';
 import NewUserForm from './components/NewUserForm.js';
 import LoginForm from './components/LoginForm.js';
 import ThingsScreen from './components/ThingsScreen.js';
 
-import logo from './logo.svg';
 import './css/App.css';
 import './css/forms.css';
 
@@ -32,7 +31,7 @@ class App extends Component {
 
   renderLoginScreen = () => {
     return (
-      <div className='container'>
+      <div className='things'>
         <NewUserForm />
         <LoginForm />
       </div>
@@ -41,7 +40,7 @@ class App extends Component {
 
   renderThingsScreen = () => {
     return (
-      <div className='container'>
+      <div className='things'>
         <ThingsScreen />
       </div>
     );
@@ -49,12 +48,8 @@ class App extends Component {
 
   render() {
       return (
-        <div className='App'>
-          <Header />
-          <div className='App-header'>
-            <img src={logo} className='App-logo' alt='logo' />
-            <h2>Welcome to 52 Things</h2>
-          </div>
+        <div className='App row'>
+          <Sidebar />
           {this.state.signedIn ? this.renderThingsScreen() : this.renderLoginScreen()}
         </div>
       );

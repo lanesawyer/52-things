@@ -2,33 +2,15 @@
   
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.sidebar {
+  background-color: blue;
   color: white;
+  width: 20%;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.header {
-  color: white;
-}
-
-.title {
-  float: left;
-}
-
-.auth {
-  float: right;
+.things {
+  width: 80%;
 }
 
 li.thing {
@@ -45,14 +27,14 @@ li.thing {
   text-decoration: line-through;
 }
 
-.container {
+.row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 400px;
 }
 
 .container-item {
-  width: 600px;
+  width: 20%;
   margin: auto;
+  display: inline-block;
 }

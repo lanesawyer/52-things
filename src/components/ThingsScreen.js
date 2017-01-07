@@ -2,7 +2,6 @@ import React from 'react';
 import firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
 
-import ThingCounter from './ThingCounter.js';
 import ThingList from './ThingList.js';
 import CategoryForm from './CategoryForm.js';
 
@@ -18,7 +17,6 @@ var ThingsScreen = React.createClass({
     render: function () {
         return (
             <section>
-                <ThingCounter />
                 {this.state.categories.map(category => {
                     return <ThingList key={category['.key']} categoryId={category['.key']} categoryTitle={category.category} />
                 })}
