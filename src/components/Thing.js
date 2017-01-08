@@ -28,7 +28,7 @@ class Thing extends Component {
 
     render() {
         return (
-            <li className='thing'>
+            <li className='thing' draggable='true'>
                 <input type='checkbox' checked={this.props.thing.completed} onClick={this.handleCheckbox} />
                 <div className={this.props.thing.completed ? 'thing-title completed' : 'thing-title'}>{this.props.thing.text}</div>
                 <button onClick={this.handleClick}>Delete</button>

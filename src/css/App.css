@@ -3,14 +3,15 @@
 }
 
 .sidebar {
-  background-color: blue;
+  background-color: #1C1D21;
   color: white;
-  width: 20%;
+  width: 350px;
   text-align: center;
+  padding: 10px;
 }
 
 .things {
-  width: 80%;
+  background-color: #EEEFF7;
 }
 
 li.thing {
@@ -30,11 +31,16 @@ li.thing {
 .row {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .container-item {
-  width: 20%;
-  margin: auto;
+  width: 500px;
   display: inline-block;
+  background-color: #445878;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  overflow: auto;
+  height: 100%;
 }

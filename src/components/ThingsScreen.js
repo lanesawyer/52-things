@@ -16,7 +16,7 @@ var ThingsScreen = React.createClass({
     },
     render: function () {
         return (
-            <section>
+            <section className='row'>
                 {this.state.categories.map(category => {
                     return <ThingList key={category['.key']} categoryId={category['.key']} categoryTitle={category.category} />
                 })}
