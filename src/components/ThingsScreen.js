@@ -1,15 +1,19 @@
 import React from 'react';
-import firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
 
+import CategoryService from '../services/CategoryService.js';
 import ThingList from './ThingList.js';
 import CategoryForm from './CategoryForm.js';
 
 var ThingsScreen = React.createClass({
     mixins: [ReactFireMixin],
     componentWillMount: function () {
-        var ref = firebase.database().ref('categories/' + firebase.auth().currentUser.uid).orderByChild('order');
-        this.bindAsArray(ref, 'categories');
+        var ref = CategoryService.getCategories();
+        if (ref) {
+            this.bindAsArray(ref, 'categories');
+        } else {
+            this.setState({categories: []});
+        }
     },
     componentWillUnmount: function () {
         this.firebaseRef.off();

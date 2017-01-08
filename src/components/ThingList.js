@@ -10,7 +10,11 @@ var ThingList = React.createClass({
     mixins: [ReactFireMixin],
     componentWillMount: function () {
         this.firebaseRef = ThingService.getThings(this.props.categoryId);
-        this.bindAsArray(this.firebaseRef, 'things');
+        if (this.firebaseRef) {
+            this.bindAsArray(this.firebaseRef, 'things');
+        } else {
+            this.setState({things: []});
+        }
     },
     componentWillUnmount: function () {
         this.firebaseRef.off();

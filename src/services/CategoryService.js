@@ -7,7 +7,10 @@ class CategoryService {
 
     getCategories = () => {
         var user = AuthService.getCurrentUser();
-        return firebase.database.ref(categoryKey + user.uid);
+        if (user) {
+            return firebase.database().ref(categoryKey + user.uid).orderByChild('order');
+        }
+        return null;
     }
 
     addCategory = (category) => {

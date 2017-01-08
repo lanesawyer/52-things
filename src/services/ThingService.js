@@ -7,8 +7,10 @@ class ThingService {
 
     getThings = (categoryId) => {
         var user = AuthService.getCurrentUser();
-        var ref = firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(categoryId);
-        return ref;
+        if (user) {
+            return firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(categoryId);
+        }
+        return null;
     }
 
     addThing = (text, category) => {
