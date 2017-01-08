@@ -9,8 +9,8 @@ import ThingForm from './ThingForm.js';
 var ThingList = React.createClass({
     mixins: [ReactFireMixin],
     componentWillMount: function () {
-        const ref = ThingService.getThings(this.props.categoryId);
-        this.bindAsArray(ref, 'things');
+        this.firebaseRef = ThingService.getThings(this.props.categoryId);
+        this.bindAsArray(this.firebaseRef, 'things');
     },
     componentWillUnmount: function () {
         this.firebaseRef.off();
@@ -18,7 +18,7 @@ var ThingList = React.createClass({
     render: function () {
         return (
             <section className='container-item'>
-                <Category title={this.props.categoryTitle} />
+                <Category id={this.props.categoryId} title={this.props.categoryTitle} />
                 <ul>
                     {this.state.things.map(item => <Thing key={item['.key']} id={item['.key']} thing={item} />)}
                 </ul>

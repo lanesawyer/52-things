@@ -19,6 +19,13 @@ class ThingService {
         });
     }
 
+    updateThing = (thingId, newText) => {
+        var user = AuthService.getCurrentUser();
+        firebase.database().ref(thingKey + user.uid).child(thingId).update({
+            text: newText
+        });
+    }
+
     toggleCompleted = (thingId, isCompleted) => {
         var user = AuthService.getCurrentUser();
         firebase.database().ref(thingKey + user.uid).child(thingId).update({
