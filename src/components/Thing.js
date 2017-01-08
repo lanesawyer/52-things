@@ -10,41 +10,35 @@ class Thing extends Component {
             isEditing: false,
             value: props.thing.text
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleTextEdit = this.handleTextEdit.bind(this);
-        this.handleTextSave = this.handleTextSave.bind(this);
-        this.handleCheckbox = this.handleCheckbox.bind(this);
     }
 
-    handleChange = (e) => {
+    handleChange = (event) => {
         this.setState({
-            value: e.target.value
+            value: event.target.value
         });
     }
 
-    handleClick(e) {
+    handleClick = (event) => {
         ThingService.deleteThing(this.props.id);
-        e.preventDefault();
+        event.preventDefault();
     }
 
-    handleTextEdit = (e) => {
+    handleTextEdit = (event) => {
         this.setState((prevState, props) => {
             return { isEditing: true };
         });
-        e.preventDefault();
+        event.preventDefault();
     }
 
-    handleTextSave = (e) => {
+    handleTextSave = (event) => {
         ThingService.updateThing(this.props.id, this.state.value);
         this.setState({
             isEditing: false
         });
-        e.preventDefault();
+        event.preventDefault();
     }
 
-    handleCheckbox(e) {
+    handleCheckbox = (event) => {
         this.setState({
             completed: !this.state.completed
         });

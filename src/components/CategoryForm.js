@@ -9,16 +9,13 @@ class CategoryForm extends Component {
     this.state = {
       value: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
 
     if (this.state.value !== '') {
       CategoryService.addCategory(this.state.value);

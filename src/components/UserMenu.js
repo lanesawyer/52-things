@@ -16,40 +16,34 @@ class UserMenu extends Component {
 
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                self.setState({signedIn: true})
+                self.setState({ signedIn: true })
             } else {
-                self.setState({signedIn: false})
+                self.setState({ signedIn: false })
             }
         });
-
-        this.handleLogout = this.handleLogout.bind(this);
     }
 
-    handleLogout(e) {
-        firebase.auth().signOut().then(function() {
-            // Sign-out successful.
-        }, function(error) {
-            // An error happened.
-        });
+    handleLogout = (event) => {
+        AuthService.logout();
+    }
+
+    renderUserMenu = () => {
+        return (
+            <div>
+                <div>{this.props.user.displayName}</div>
+                <div>{this.props.user.email}</div>
+                <div><img src={AuthService.getGravitarUrl(this.props.user.email)} alt='Profile' /></div>
+                <button onClick={this.handleLogout}>Logout</button>
+            </div>
+        );
     }
 
     render() {
-        if (this.state.signedIn) {
-            return (
-                <div className='auth'>
-                    <div>{this.props.user.displayName}</div>
-                    <div>{this.props.user.email}</div>
-                    <div><img src={AuthService.getGravitarUrl(this.props.user.email)} alt='Profile' /></div>
-                    <button onClick={this.handleLogout}>Logout</button>
-                </div>
-            );
-        } else {
-            return (
-                <div className='auth'>
-                    <button>Login!</button>
-                </div>
-            );
-        }
+        return (
+            <div className='auth'>
+                {this.state.signedIn ? this.renderUserMenu() : "" }
+            </div>
+        );
     }
 }
 

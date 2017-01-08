@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+
+import AuthService from '../services/AuthService.js';
 
 class NewUserForm extends Component {
     constructor(props) {
@@ -9,31 +10,22 @@ class NewUserForm extends Component {
             email: '',
             password: ''
         };
-
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleEmailChange(event) {
+    handleEmailChange = (event) => {
         this.setState({
             email: event.target.value
         });
     }
 
-    handlePasswordChange(event) {
+    handlePasswordChange = (event) => {
         this.setState({
             password: event.target.value
         });
     }
 
-    handleSubmit(event) {
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            console.log('error:' + errorCode + ' ' + errorMessage);
-        });
+    handleSubmit = (event) => {
+        AuthService.createUser(this.state.email, this.state.password);
 
         event.preventDefault();
     }
