@@ -8,9 +8,17 @@ class ThingService {
     getThings = (categoryId) => {
         var user = AuthService.getCurrentUser();
         if (user) {
-            return firebase.database().ref('things/' + user.uid).orderByChild('category').equalTo(categoryId);
+            return firebase.database().ref(thingKey + user.uid).orderByChild('category').equalTo(categoryId);
         }
         return null;
+    }
+
+    getNumberOfThings = () => {
+        var user = AuthService.getCurrentUser();
+        if (user) {
+            return firebase.database().ref(thingKey + user.uid + '/count');
+        }
+        return 0;
     }
 
     addThing = (text, category) => {

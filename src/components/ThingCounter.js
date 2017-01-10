@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactFireMixin from 'reactfire';
 
-class ThingCounter extends Component {
-    constructor(props) {
-        super(props);
+import ThingService from '../services/ThingService.js';
 
-        this.state = {
-            things: 0
-        };
-    }
-
-    render() {
-
-        // Get current count of total number of things
-
+var ThingCounter = React.createClass({
+    mixins: [ReactFireMixin],
+    componentWillMount: function () {
+        this.firebaseRef = ThingService.getNumberOfThings();
+        if (this.firebaseRef) {
+            this.bindAsObject(this.firebaseRef, 'count');
+        } else {
+            this.setState({count: 0});
+        }
+    },
+    componentWillUnmount: function () {
+        this.firebaseRef.off();
+    },
+    render: function () {
         return (
             <div className='thing-counter'>
                 {this.state.things}
             </div>
         );
     }
-}
+});
 
 export default ThingCounter
