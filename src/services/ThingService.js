@@ -23,9 +23,18 @@ class ThingService {
 
     addThing = (text, category) => {
         var user = AuthService.getCurrentUser();
-        firebase.database().ref(thingKey + user.uid).push({
+        var userThingRef = firebase.database().ref(thingKey + user.uid);
+        userThingRef.push({
             text: text,
             category: category
+        });
+
+        ;
+        userThingRef.once('value').then(function(snapshot) {
+            var oldCount = snapshot.val().count;
+            userThingRef.update({
+                count: oldCount + 1
+            })
         });
     }
 
@@ -45,7 +54,15 @@ class ThingService {
 
     deleteThing = (thingId) => {
         var user = AuthService.getCurrentUser();
-        firebase.database().ref(thingKey + user.uid).child(thingId).remove();
+        var userThingRef = firebase.database().ref(thingKey + user.uid);
+        userThingRef.child(thingId).remove();
+
+        userThingRef.once('value').then(function(snapshot) {
+            var oldCount = snapshot.val().count;
+            userThingRef.update({
+                count: oldCount - 1
+            })
+        });
     }
 }
 

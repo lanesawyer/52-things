@@ -32,7 +32,9 @@ class CategoryForm extends Component {
           Thing:
           <input type='text' value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type='submit' value='Add Category' />
+        <button type='submit'>
+          <i className='fa fa-plus' aria-hidden='true' title='Add'></i> Category
+        </button>
       </form>
     );
   }

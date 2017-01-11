@@ -11,7 +11,7 @@
 }
 
 .things {
-  background-color: #EEEFF7;
+  background-color: #445878;
 }
 
 li.thing {
@@ -37,7 +37,7 @@ li.thing {
 .container-item {
   width: 500px;
   display: inline-block;
-  background-color: #445878;
+  background-color: #EEEFF7;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;

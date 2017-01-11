@@ -5,6 +5,11 @@ import ThingService from '../services/ThingService.js';
 
 var ThingCounter = React.createClass({
     mixins: [ReactFireMixin],
+    getInitialState: function() {
+        return {
+            count: 0
+        };
+    },
     componentWillMount: function () {
         this.firebaseRef = ThingService.getNumberOfThings();
         if (this.firebaseRef) {
@@ -18,9 +23,9 @@ var ThingCounter = React.createClass({
     },
     render: function () {
         return (
-            <div className='thing-counter'>
-                {this.state.things}
-            </div>
+            <h2 className='thing-counter'>
+                {this.state.count['.value']} / 52
+            </h2>
         );
     }
 });

@@ -10,7 +10,7 @@ class Sidebar extends Component {
         super(props);
 
         this.state = {
-            signedIn: false
+            signedIn: AuthService.getCurrentUser() != null
         }
 
         var self = this;
@@ -25,7 +25,11 @@ class Sidebar extends Component {
     }
 
     renderThingCounter() {
-        return <ThingCounter />;
+        if (this.state.signedIn) {
+            return <ThingCounter />;
+        } else {
+            return <div>Sup</div>
+        }
     }
 
     render() {
@@ -36,7 +40,7 @@ class Sidebar extends Component {
             <section className='sidebar'>
                 <h1 className='title'>52 Things</h1>
                 <UserMenu user={user} />
-                {this.state.signedIn ? this.renderThingCounter() : ''}
+                {this.renderThingCounter()}
             </section>
         );
     }

@@ -15,14 +15,33 @@ class CategoryService {
 
     addCategory = (category) => {
         var user =  AuthService.getCurrentUser();
-        firebase.database().ref(categoryKey + user.uid).push({
-            category: category
+        var userCategoryRef = firebase.database().ref(categoryKey + user.uid);
+        userCategoryRef.once('value').then(function(snapshot) {
+            var oldCount = snapshot.val().count;
+            userCategoryRef.update({
+                count: oldCount + 1
+            })
+
+            userCategoryRef.push({
+                category: category,
+                order: oldCount + 1
+            });
         });
+
+
     }
 
     deleteCategory = (categoryId) => {
         var user =  AuthService.getCurrentUser();
-        firebase.database().ref(categoryKey + user.uid).child(categoryId).remove();
+        var userCategoryRef = firebase.database().ref(categoryKey + user.uid);
+        userCategoryRef.child(categoryId).remove();
+
+        userCategoryRef.once('value').then(function(snapshot) {
+            var oldCount = snapshot.val().count;
+            userCategoryRef.update({
+                count: oldCount - 1
+            })
+        });
     }
 }
 
