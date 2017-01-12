@@ -9,6 +9,14 @@ document.body.addEventListener("mousewheel", event => {
   return false;
 });
 
+if (navigator.serviceWorker) {
+  navigator.serviceWorker.register('serviceWorker.js').then(() => {
+    console.log('service worker registered');
+  }).catch((error) => {
+    console.log('service worker registration failed: ' + error);
+  });
+}
+
 ReactDOM.render(
   <App />,
   document.getElementById('root')
