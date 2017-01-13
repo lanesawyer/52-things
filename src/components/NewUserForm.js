@@ -7,9 +7,16 @@ class NewUserForm extends Component {
         super(props);
 
         this.state = {
+            name: '',
             email: '',
             password: ''
         };
+    }
+
+    handleNameChange = (event) => {
+        this.setState({
+            name: event.target.value
+        });
     }
 
     handleEmailChange = (event) => {
@@ -25,7 +32,7 @@ class NewUserForm extends Component {
     }
 
     handleSubmit = (event) => {
-        AuthService.createUser(this.state.email, this.state.password);
+        AuthService.createUser(this.state.name, this.state.email, this.state.password);
 
         event.preventDefault();
     }
@@ -35,6 +42,8 @@ class NewUserForm extends Component {
             <section className='container-item'>
                 <h1>Create Account</h1>
                 <form onSubmit={this.handleSubmit}>
+                    <label>Name:</label>
+                    <input type='text' value={this.state.name} onChange={this.handleNameChange} />
                     <label>Email:</label>
                     <input type='text' value={this.state.email} onChange={this.handleEmailChange} />
                     <label>Password:</label>

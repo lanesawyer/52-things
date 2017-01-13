@@ -12,7 +12,9 @@ class Category extends Component {
         return (
             <div>
                 <h1>{this.props.title}</h1>
-                <button onClick={this.handleClick}>Delete</button>
+                 <button className='float-right' onClick={this.handleClick}>
+                    <i className='fa fa-trash' aria-hidden='true' title='Delete'></i>
+                </button>
             </div>
         );
     }

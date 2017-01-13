@@ -14,6 +14,10 @@
   background-color: #445878;
 }
 
+ul {
+  padding: 10px;
+}
+
 li.thing {
   padding: 10px;
   list-style: none;
@@ -43,4 +47,8 @@ li.thing {
   padding: 10px;
   overflow: auto;
   height: 100%;
+}
+
+.float-right {
+  float: right;
 }

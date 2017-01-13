@@ -27,12 +27,14 @@ class ThingForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='inline-form' onSubmit={this.handleSubmit}>
         <label>
           Thing:
           <input type='text' value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type='submit' value='Add' />
+        <button type='submit'>
+          <i className='fa fa-plus' aria-hidden='true' title='Add'></i> Thing
+        </button>
       </form>
     );
   }

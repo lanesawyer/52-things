@@ -6,15 +6,23 @@ const categoryKey = 'categories/';
 class CategoryService {
 
     getCategories = () => {
-        var user = AuthService.getCurrentUser();
+        const user = AuthService.getCurrentUser();
         if (user) {
             return firebase.database().ref(categoryKey + user.uid).orderByChild('order');
         }
         return null;
     }
+    
+    getNumberOfCategories = () => {
+        const user = AuthService.getCurrentUser();
+        if (user) {
+            return firebase.database().ref(categoryKey + user.uid + '/count');
+        }
+        return 0;
+    }
 
     addCategory = (category) => {
-        var user =  AuthService.getCurrentUser();
+        const user =  AuthService.getCurrentUser();
         var userCategoryRef = firebase.database().ref(categoryKey + user.uid);
         userCategoryRef.once('value').then(function(snapshot) {
             var oldCount = snapshot.val().count;
@@ -32,7 +40,7 @@ class CategoryService {
     }
 
     deleteCategory = (categoryId) => {
-        var user =  AuthService.getCurrentUser();
+        const user =  AuthService.getCurrentUser();
         var userCategoryRef = firebase.database().ref(categoryKey + user.uid);
         userCategoryRef.child(categoryId).remove();
 

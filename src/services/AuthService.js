@@ -32,13 +32,22 @@ class AuthService {
         });
     }
 
-    createUser = (email, password) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+    createUser = (name, email, password) => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((user) =>{
+            return user.updateProfile({
+                displayName: name
+            }).then(function() {
+                // Update successful.
+            }, function(error) {
+                // An error happened.
+            });
+        })
+        .catch((error) => {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log('User creation error:' + errorCode + ' ' + errorMessage);
-        });
+        });        
     }
 
     getCurrentUser = () => {

@@ -27,7 +27,7 @@ class CategoryForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='container-item inline-form' onSubmit={this.handleSubmit}>
         <label>
           Thing:
           <input type='text' value={this.state.value} onChange={this.handleChange} />
