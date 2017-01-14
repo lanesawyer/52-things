@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactFireMixin from 'reactfire';
 
-import ThingService from '../services/ThingService.js';
-import CategoryService from '../services/CategoryService.js';
+import CountService from '../services/CountService.js';
 
 var ThingCounter = React.createClass({
     mixins: [ReactFireMixin],
@@ -13,14 +12,14 @@ var ThingCounter = React.createClass({
         };
     },
     componentWillMount: function () {
-        this.thingsRef = ThingService.getNumberOfThings();
+        this.thingsRef = CountService.getNumberOfThings();
         if (this.thingsRef) {
             this.bindAsObject(this.thingsRef, 'thingCount');
         } else {
             this.setState({thingCount: 0});
         }
 
-        this.categoriesRef = CategoryService.getNumberOfCategories();
+        this.categoriesRef = CountService.getNumberOfCategories();
         if (this.categoriesRef) {
             this.bindAsObject(this.categoriesRef, 'categoryCount');
         } else {

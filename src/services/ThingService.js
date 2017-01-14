@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 import AuthService from './AuthService.js';
+import CountService from './CountService.js';
 
 const thingKey = 'things/';
 
@@ -29,13 +30,7 @@ class ThingService {
             category: category
         });
 
-        ;
-        userThingRef.once('value').then(function(snapshot) {
-            var oldCount = snapshot.val().count;
-            userThingRef.update({
-                count: oldCount + 1
-            })
-        });
+        CountService.addThing();
     }
 
     updateThing = (thingId, newText) => {
@@ -57,12 +52,7 @@ class ThingService {
         var userThingRef = firebase.database().ref(thingKey + user.uid);
         userThingRef.child(thingId).remove();
 
-        userThingRef.once('value').then(function(snapshot) {
-            var oldCount = snapshot.val().count;
-            userThingRef.update({
-                count: oldCount - 1
-            })
-        });
+        CountService.deleteThing();
     }
 }
 

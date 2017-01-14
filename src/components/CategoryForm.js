@@ -29,11 +29,10 @@ class CategoryForm extends Component {
     return (
       <form className='container-item inline-form' onSubmit={this.handleSubmit}>
         <label>
-          Thing:
-          <input type='text' value={this.state.value} onChange={this.handleChange} />
+          <input type='text' placeholder="Category" value={this.state.value} onChange={this.handleChange} />
         </label>
         <button type='submit'>
-          <i className='fa fa-plus' aria-hidden='true' title='Add'></i> Category
+          <i className='fa fa-plus' aria-hidden='true' title='Add'></i>
         </button>
       </form>
     );
