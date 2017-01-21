@@ -24,7 +24,7 @@ li.thing {
 
 .thing-title {
   display: inline-block;
-  width: 80%;
+  width: 194px;
 }
 
 .completed {
@@ -38,7 +38,7 @@ li.thing {
 }
 
 .container-item {
-  width: 20%;
+  width: 324px;
   display: inline-block;
   background-color: #EEEFF7;
   border-radius: 5px;

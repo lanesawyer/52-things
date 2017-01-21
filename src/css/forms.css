@@ -26,5 +26,9 @@ form.inline-form button, form.inline-form input[type='submit'], form.inline-form
 }
 
 .thing input[type='text'] {
-    width: 246px; /* For some reason (which I'll figure out later) inputs get 4 extra pixels of width so I had to reduce this */
+    width: 195px; /* For some reason (which I'll figure out later) inputs get 4 extra pixels of width so I had to reduce this */
+}
+
+.inline-form input[type='text'] {
+    width: 250px;
 }

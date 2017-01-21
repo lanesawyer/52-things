@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import AuthService from './AuthService.js';
 import CountService from './CountService.js';
+import ThingService from './ThingService.js';
 
 const categoryKey = 'categories/';
 
@@ -32,6 +33,8 @@ class CategoryService {
         const user =  AuthService.getCurrentUser();
         var userCategoryRef = firebase.database().ref(categoryKey + user.uid);
         userCategoryRef.child(categoryId).remove();
+
+        ThingService.deleteThingsInCategory(categoryId);        
 
         CountService.deleteCategory();
     }

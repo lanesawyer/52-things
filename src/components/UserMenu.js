@@ -30,9 +30,9 @@ class UserMenu extends Component {
     renderUserMenu = () => {
         return (
             <div>
+                <div><img src={AuthService.getGravitarUrl(this.props.user.email)} alt='Profile' /></div>
                 <div>{this.props.user.displayName}</div>
                 <div>{this.props.user.email}</div>
-                <div><img src={AuthService.getGravitarUrl(this.props.user.email)} alt='Profile' /></div>
                 <button onClick={this.handleLogout}>Logout</button>
             </div>
         );
