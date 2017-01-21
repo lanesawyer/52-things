@@ -15,12 +15,13 @@ class CountService {
         return 0;
     }
 
-    
+
     addCategory = () => {
         const user = AuthService.getCurrentUser();
-        if(user) {
+        if (user) {
             var categoryCountRef = firebase.database().ref(countKey + user.uid)
-            categoryCountRef.once('value').then((snapshot) => {;
+            categoryCountRef.once('value').then((snapshot) => {
+                ;
                 categoryCountRef.update({
                     categories: snapshot.val().categories + 1
                 })
@@ -30,16 +31,17 @@ class CountService {
 
     deleteCategory = () => {
         const user = AuthService.getCurrentUser();
-        if(user) {
+        if (user) {
             var categoryCountRef = firebase.database().ref(countKey + user.uid)
-            categoryCountRef.once('value').then((snapshot) => {;
+            categoryCountRef.once('value').then((snapshot) => {
+                ;
                 categoryCountRef.update({
                     categories: snapshot.val().categories - 1
                 })
             });
         }
     }
-    
+
     getNumberOfThings = () => {
         var user = AuthService.getCurrentUser();
         if (user) {
@@ -62,11 +64,23 @@ class CountService {
 
     deleteThing = () => {
         const user = AuthService.getCurrentUser();
-        if(user) {
+        if (user) {
             var categoryCountRef = firebase.database().ref(countKey + user.uid)
-            categoryCountRef.once('value').then((snapshot) => {;
+            categoryCountRef.once('value').then((snapshot) => {
                 categoryCountRef.update({
                     things: snapshot.val().things - 1
+                })
+            });
+        }
+    }
+
+    deleteThings = (numThingsToDelete) => {
+        const user = AuthService.getCurrentUser();
+        if (user) {
+            var categoryCountRef = firebase.database().ref(countKey + user.uid)
+            categoryCountRef.once('value').then((snapshot) => {
+                categoryCountRef.update({
+                    things: snapshot.val().things - numThingsToDelete
                 })
             });
         }

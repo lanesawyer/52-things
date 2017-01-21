@@ -29,6 +29,13 @@ class CategoryService {
         });
     }
 
+    updateCategory = (categoryId, newText) => {
+        var user = AuthService.getCurrentUser();
+        firebase.database().ref(categoryKey + user.uid).child(categoryId).update({
+            category: newText
+        });
+    }
+
     deleteCategory = (categoryId) => {
         const user =  AuthService.getCurrentUser();
         var userCategoryRef = firebase.database().ref(categoryKey + user.uid);

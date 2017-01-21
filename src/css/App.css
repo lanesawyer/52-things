@@ -27,6 +27,11 @@ li.thing {
   width: 194px;
 }
 
+.category-title {
+  width: 224px;
+  font-size: 2em;
+}
+
 .completed {
   text-decoration: line-through;
 }
@@ -46,8 +51,4 @@ li.thing {
   padding: 10px;
   overflow: auto;
   position: relative;
-}
-
-.float-right {
-  float: right;
 }

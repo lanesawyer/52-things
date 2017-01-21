@@ -27,7 +27,6 @@ class App extends Component {
       }
     });
   }
-  // get categories of things to pass into thing list
 
   renderLoginScreen = () => {
     return (

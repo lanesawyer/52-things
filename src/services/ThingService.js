@@ -59,12 +59,16 @@ class ThingService {
         var user = AuthService.getCurrentUser();
         var userThingCategoryRef = firebase.database().ref(thingKey + user.uid).orderByChild('category').equalTo(categoryId);
 
+        var numThingsToDelete = 0;
+
         userThingCategoryRef.once('value', function(snapshot) {
             snapshot.forEach(child => {
                 child.ref.remove();
-                CountService.deleteThing();
+                numThingsToDelete++;
             });
         });
+
+        CountService.deleteThings(numThingsToDelete);
     }
 }
 
